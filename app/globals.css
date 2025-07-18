@@ -1,0 +1,370 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definir la fuente Manrope si no se usa next/font */
+/* @font-face {
+  font-family: 'Manrope';
+  src: url('/Manrope-VariableFont_wght.ttf') format('truetype');
+  font-weight: 200 800;
+  font-display: swap;
+} */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+    --page-background: 330 10% 98%; /* Rosa muy claro, casi blanco */
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+    --page-background: 0 0% 10%; /* Un gris oscuro para el modo oscuro */
+  }
+}
+
+@layer components {
+  .input-container {
+    position: relative;
+  }
+
+  .input-container input:focus + label,
+  .input-container input:not(:placeholder-shown) + label {
+    transform: translateY(-1.5rem) scale(0.75);
+    color: #da0081;
+  }
+
+  .bg-nequi {
+    background: linear-gradient(135deg, #fbe5f2 0%, #f3d4e6 100%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+
+  body {
+    /* Aplicar el fondo global con gradiente y nueva imagen */
+    background-color: hsl(var(--page-background));
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 192, 203, 0.05)),
+      url("/background-squares.png");
+    background-repeat: repeat;
+    background-size: auto;
+    @apply text-foreground font-sans;
+  }
+  /* Si usas next/font con variable, puedes definirlo aquí */
+  html {
+    font-family: var(--font-manrope), sans-serif;
+  }
+}
+
+/* Custom Captcha Styles */
+.fkrc-mp {
+  margin: 0;
+  padding: 0;
+}
+
+.fkrc-block {
+  display: block;
+}
+
+.fkrc-linea-normal {
+  line-height: normal;
+}
+
+.fkrc-checkbox-window {
+  position: relative;
+  height: 74px;
+  width: 100%;
+  background-color: #f9f9f9;
+  border-radius: 3px;
+  border: 1px solid #d3d3d3;
+}
+
+.fkrc-checkbox-container {
+  width: 28px;
+  height: 28px;
+}
+
+.fkrc-checkbox {
+  position: relative;
+  background-color: #fff;
+  border-radius: 2px;
+  height: 100%;
+  width: 100%;
+  border: 2px solid #c1c1c1;
+  margin: 21px 0 0 12px;
+  outline: none;
+  font-family: Arial, Helvetica, sans-serif;
+  transition: width 500ms, height 500ms, border-radius 500ms, margin-top 500ms, margin-left 500ms, opacity 700ms;
+}
+
+.fkrc-checkbox:hover {
+  border: 2px solid #b2b2b2;
+}
+
+.fkrc-no-soy-un-robot {
+  position: relative;
+  width: fit-content;
+  left: 52px;
+  bottom: 2px;
+  font-size: 15px;
+  color: #282727;
+  font-weight: 500;
+}
+
+.fkrc-captcha-logo {
+  position: absolute;
+  right: 37px;
+  bottom: 35px;
+  width: 33px;
+  height: 33px;
+  vertical-align: baseline;
+}
+
+.fkrc-checkbox-desc {
+  color: #555555;
+  position: absolute;
+  font-size: 7px;
+  text-align: center;
+  bottom: 10px;
+  right: 20px;
+}
+
+.fkrc-checkbox-desc.reCAPTCHA {
+  font-size: 10px;
+  width: fit-content;
+  bottom: 20px;
+  right: 28px;
+}
+
+.fkrc-checkbox-desc.pt {
+  right: 10px;
+  font-size: 9px;
+  width: fit-content;
+}
+
+.fkrc-spinner {
+  visibility: hidden;
+  position: absolute;
+  height: 35px;
+  width: 35px;
+  top: 18px;
+  left: 9px;
+  opacity: 0;
+  transition: opacity 400ms;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.fkrc-spinner.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.checkmark {
+  width: 40px;
+  height: 28px;
+  position: absolute;
+  top: 24px;
+  left: 3px;
+  background-image: url(/sprite-chulito.png);
+  background-repeat: no-repeat;
+  background-position-y: 0px;
+  animation: none;
+  display: none;
+}
+
+@keyframes checkAnimation {
+  0% {
+    background-position-y: 0px;
+  }
+  100% {
+    background-position-y: -630px;
+  }
+}
+
+.checked.checkmark {
+  display: block;
+  animation: checkAnimation .7s steps(21) forwards;
+}
+
+/* Verification window styles */
+.fkrc-verifywin-window {
+  opacity: 0;
+  position: absolute;
+  visibility: hidden;
+  margin: auto;
+  width: 310px;
+  background-color: #fff;
+  border: 1px solid #cecece;
+  -webkit-box-shadow: 5px 6px 7px -3px rgba(0, 0, 0, 0.12);
+  box-shadow: 5px 6px 7px -3px rgba(0, 0, 0, 0.12);
+  transition: opacity 400ms;
+}
+
+.fkrc-verifywin-ventana-flecha {
+  opacity: 0;
+  position: absolute;
+  visibility: hidden;
+  transition: opacity 200ms;
+  width: 10px;
+  height: 23px;
+}
+
+.fkrc-verifywin-container {
+  padding: 8px;
+}
+
+.fkrc-verifywin-header {
+  background-color: #5a89e1;
+  padding: 16px 16px 24px 16px;
+  color: #fff;
+}
+
+.fkrc-verifywin-encabezado-texto-pequeño {
+  font-size: 14px;
+  line-height: normal;
+}
+
+.fkrc-verifywin-encabezado-texto-medio {
+  font-size: 16px;
+}
+
+.fkrc-verifywin-encabezado-texto-grande {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.fkrc-verifywin-main {
+  padding: 5px;
+}
+
+.fkrc-verifywin-footer {
+  border-top: 1px solid #cecece;
+  padding: 10px 7px 10px 7px;
+  color: #737373;
+  display: grid;
+  grid-template-columns: auto 102px;
+  font-size: 13px;
+}
+
+.fkrc-verifywin-pie-de-pagina-izquierdo {
+  padding: 5px;
+}
+
+.fkrc-verifywin-boton-de-verificacion {
+  text-transform: uppercase;
+  background-color: #5a89e2;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  padding: 12px 0 12px 0;
+  text-decoration: none;
+  font-weight: 600;
+  height: min-content;
+  border-radius: 3px;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 767px) {
+  footer {
+    background-image: none !important; /* Elimina la imagen de fondo para móviles */
+    background-color: #200020 !important; /* Asegura el color de fondo sólido */
+  }
+
+  .footer-content-wrapper {
+    margin-top: 0 !important;
+    padding-top: 64px !important;
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+  }
+
+  .vigilado-mobile {
+    left: 0 !important;
+    top: 340px !important;
+  }
+}
